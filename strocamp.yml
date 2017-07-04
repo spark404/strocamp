@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    ssh_key: ht-sbp
+    strocamp_node_prefix: strocamp
+    mail_template: CoreOS
+    mail_instance_type: employee-small-ha
+
+  roles:
+    - common
+    - mail

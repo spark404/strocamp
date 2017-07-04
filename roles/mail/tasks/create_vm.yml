@@ -1,0 +1,12 @@
+  - name: Start mail node
+    local_action:
+      module: cs_instance
+      name: "{{ strocamp_node_prefix }}-postfix"
+      template: "{{ mail_template }}"
+      service_offering: "{{ mail_instance_type }}"
+      networks: "htrippaers-default"
+      ssh_key: "{{ ssh_key }}"
+      user_data: "{{ lookup('template', '../templates/strocamp-postfix.j2') }}"
+    register: postfix
+
+  - debug: msg='postfix IP is {{ postfix.default_ip }}'

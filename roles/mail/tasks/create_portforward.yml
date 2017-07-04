@@ -1,0 +1,17 @@
+# Create postfix port forwards
+
+  - name: Create SMTP port forward for postfix
+    local_action:
+        module: cs_portforward
+        ip_address: "178.237.34.219"
+        vm: "{{ strocamp_node_prefix }}-postfix"
+        public_port: 25
+        private_port: 25
+
+  - name: Create SSH port forward for postfix
+    local_action:
+        module: cs_portforward
+        ip_address: "178.237.34.187"
+        vm: "{{ strocamp_node_prefix }}-postfix"
+        public_port: 2219
+        private_port: 22
